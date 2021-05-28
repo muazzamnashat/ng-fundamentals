@@ -3,25 +3,42 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
-  template: `
-    <h1>New Event</h1>
-    <hr />
-    <div class="col-md-6">
-      <h3>Form</h3>
-      <br />
-      <button class="btn btn-default">Save</button>
-
-      <button class="btn btn-default" (click)="cancel()">Cancel</button>
-    </div>
-  `,
-  styles: [],
+  templateUrl: './create-event.component.html',
+  styles: [
+    `
+      em {
+        float: right;
+        color: #e05c65;
+        padding-left: 10px;
+      }
+      .error input {
+        background-color: #e3c3c5;
+      }
+      .error ::-webkit-input-placeholder {
+        color: #999;
+      }
+      .error ::-moz-placeholder {
+        color: #999;
+      }
+      .error :moz-placeholder {
+        color: #999;
+      }
+      .error ::-ms-input-placeholder {
+        color: #999;
+      }
+    `,
+  ],
 })
 export class CreateEventComponent implements OnInit {
   isDirty: boolean = true;
+  newEvent;
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
+  saveEvent(formValues) {
+    console.log(formValues);
+  }
   cancel(): void {
     this.router.navigate(['/events']);
   }
